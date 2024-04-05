@@ -15,15 +15,15 @@ fn main() {
         .map(|s| s.parse().unwrap())
         .collect();
 
-    let is_ok = |mid: usize| -> bool { a[mid] >= nx[1] };
-    let ans = meguru_bisect(0usize.wrapping_sub(1), a.len(), &is_ok);
+    let is_ok = |mid: isize| -> bool { a[mid as usize] >= nx[1] };
+    let ans = meguru_bisect(-1, nx[0], &is_ok);
 
     println!("{}", ans + 1);
 }
 
-fn meguru_bisect<F>(mut ng: usize, mut ok: usize, is_ok: &F) -> usize
+fn meguru_bisect<F>(mut ng: isize, mut ok: isize, is_ok: &F) -> isize
 where
-    F: Fn(usize) -> bool,
+    F: Fn(isize) -> bool,
 {
     while ok - ng > 1 {
         let mid = ng + (ok - ng) / 2;
