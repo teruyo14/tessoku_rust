@@ -4,7 +4,6 @@ fn main() {
     let mut input = String::new();
     stdin().read_line(&mut input).unwrap();
     let hw: Vec<usize> = input
-        .trim()
         .split_whitespace()
         .map(|s| s.parse().unwrap())
         .collect();
